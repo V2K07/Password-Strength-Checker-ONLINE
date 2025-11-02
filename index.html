@@ -12,12 +12,27 @@
     <h1>🔐 Password Strength Checker</h1>
     <p>Test your password’s strength and get security suggestions.</p>
 
+    <!-- Password Input -->
     <input type="password" id="password" placeholder="Enter your password..." />
     <div class="strength-meter">
       <div id="strength-bar"></div>
     </div>
+
+    <!-- Strength Feedback -->
     <p id="feedback"></p>
     <ul id="issues"></ul>
+
+    <!-- Add New Common Password -->
+    <hr>
+    <h3>Add Common Passwords</h3>
+    <input type="text" id="newCommonPassword" placeholder="Type weak password to add..." />
+    <button id="addButton">Add to Common List</button>
+    <p id="addStatus"></p>
+
+    <!-- Upload Common Password File -->
+    <hr>
+    <h3>Upload Common Password List</h3>
+    <input type="file" id="fileInput" accept=".txt" />
   </div>
 
   <script src="script.js"></script>
