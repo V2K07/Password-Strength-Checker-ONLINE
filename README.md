@@ -52,4 +52,4 @@ https://v2k07.github.io/Password-Strength-Checker-ONLINE/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/password-checker.git
+   git clone https://github.com/V2K07/password-checker.git
