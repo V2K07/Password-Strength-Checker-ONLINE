@@ -1,33 +1,29 @@
-/* ===== Base Layout ===== */
+/* ===== Global Page Setup ===== */
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
   height: 100%;
   font-family: 'Segoe UI', Tahoma, sans-serif;
-  background: linear-gradient(135deg, #0b0f16, #0e1624, #131b2b);
   color: #e6edf3;
+  background: radial-gradient(circle at top left, #0a0f1a, #0f2027, #1a1f2b);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
 
-/* ===== Glassmorphism Container ===== */
+/* ===== Container ===== */
 .container {
-  position: relative;
-  background: rgba(22, 27, 34, 0.35);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  padding: 40px 35px;
-  width: 380px;
-  max-width: 90%;
+  background: rgba(22, 27, 34, 0.9);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
   text-align: center;
-  box-shadow: 0 0 35px rgba(0, 255, 136, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 1;
 }
 
 .container:hover {
@@ -35,43 +31,47 @@ html, body {
   box-shadow: 0 0 40px rgba(0, 255, 136, 0.15);
 }
 
-/* ===== Text Elements ===== */
+/* ===== Text ===== */
 h1 {
-  font-size: 24px;
-  margin-bottom: 12px;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
   color: #00ff9f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
 }
 
 p {
-  font-size: 14px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
   color: #bcbcbc;
-  margin-bottom: 15px;
 }
 
-/* ===== Input Box ===== */
+/* ===== Input Field ===== */
 input[type="password"] {
   width: 100%;
   padding: 12px;
-  font-size: 16px;
+  font-size: 1rem;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(20, 25, 33, 0.6);
-  color: #fff;
+  border: 1px solid #30363d;
+  background: #161b22;
+  color: white;
   outline: none;
   margin-top: 10px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
 }
 
 input[type="password"]:focus {
   border-color: #00ff9f;
-  box-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
 }
 
 /* ===== Strength Meter ===== */
 .strength-meter {
   width: 100%;
   height: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  background: #2f3136;
   border-radius: 5px;
   margin-top: 15px;
   overflow: hidden;
@@ -80,16 +80,15 @@ input[type="password"]:focus {
 #strength-bar {
   height: 100%;
   width: 0%;
-  border-radius: 5px;
   transition: width 0.3s ease, background-color 0.3s ease;
+  border-radius: 5px;
 }
 
-/* ===== Feedback Section ===== */
+/* ===== Feedback ===== */
 #feedback {
   margin-top: 15px;
   font-size: 16px;
   font-weight: bold;
-  color: #00ff9f;
 }
 
 #issues {
@@ -109,45 +108,27 @@ input[type="password"]:focus {
   font-weight: bold;
   margin-top: 10px;
   font-size: 14px;
-  color: #bcbcbc;
 }
 
-/* ===== Responsive Design ===== */
-@media (max-width: 768px) {
-  .container {
-    width: 85%;
-    padding: 30px 25px;
-  }
-
-  h1 {
-    font-size: 22px;
-  }
-
-  input[type="password"] {
-    font-size: 15px;
-    padding: 10px;
+/* ===== Responsive Fixes ===== */
+@media (max-height: 600px) {
+  body {
+    align-items: flex-start;
+    padding-top: 40px;
   }
 }
 
 @media (max-width: 480px) {
-  body {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-  }
-
   .container {
     width: 95%;
-    padding: 25px 20px;
-    box-shadow: 0 0 25px rgba(0, 255, 136, 0.08);
+    padding: 1.5rem;
   }
 
   h1 {
-    font-size: 20px;
+    font-size: 1.3rem;
   }
 
   p {
-    font-size: 13px;
+    font-size: 0.8rem;
   }
 }
