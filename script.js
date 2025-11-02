@@ -4,14 +4,16 @@ const feedback = document.getElementById("feedback");
 const issuesList = document.getElementById("issues");
 const breachStatus = document.getElementById("breachStatus");
 
-// Default common passwords
+// ✅ Predefined common password list (static)
 const commonPasswords = [
   "password", "123456", "123456789", "qwerty", "abc123", "password1",
   "admin", "letmein", "welcome", "iloveyou", "123123", "root", "1234",
-  "111111", "12345", "12345678", "qwertyuiop", "user", "default", "login"
+  "111111", "12345", "12345678", "qwertyuiop", "user", "default", "login",
+  "monkey", "dragon", "sunshine", "princess", "football", "baseball", 
+  "shadow", "master", "superman", "hello", "freedom", "whatever"
 ];
 
-// Strength checker
+// 🧠 Password strength checking
 passwordInput.addEventListener("input", async () => {
   const val = passwordInput.value;
   if (!val) {
@@ -25,26 +27,33 @@ passwordInput.addEventListener("input", async () => {
   let strength = 0;
   let issues = [];
 
+  // Length check
   if (val.length >= 8) strength++;
   else issues.push("❌ Too short — use at least 8 characters.");
 
+  // Uppercase
   if (/[A-Z]/.test(val)) strength++;
   else issues.push("⚠️ Add uppercase letters (A–Z).");
 
+  // Lowercase
   if (/[a-z]/.test(val)) strength++;
   else issues.push("⚠️ Add lowercase letters (a–z).");
 
+  // Numbers
   if (/\d/.test(val)) strength++;
   else issues.push("⚠️ Include numbers (0–9).");
 
+  // Special chars
   if (/[@$!%*?&^#()_\-+=<>]/.test(val)) strength++;
   else issues.push("⚠️ Add special symbols like @, #, $, %, etc.");
 
+  // Common password check
   if (commonPasswords.includes(val.toLowerCase())) {
     strength = 0;
-    issues = ["🚨 This password is too common! Pick something unique."];
+    issues = ["🚨 This password is too common! Choose something unique."];
   }
 
+  // Display strength
   const colors = ["#ff4b5c", "#ffb347", "#ffe600", "#9acd32", "#00c853"];
   const texts = ["Very Weak ❌", "Weak ⚠️", "Fair ⚙️", "Good ✅", "Strong 💪"];
 
@@ -52,6 +61,7 @@ passwordInput.addEventListener("input", async () => {
   strengthBar.style.backgroundColor = colors[strength - 1] || "#2f3136";
   feedback.textContent = texts[strength - 1] || "";
 
+  // Update feedback list
   issuesList.innerHTML = "";
   issues.forEach(issue => {
     const li = document.createElement("li");
@@ -64,47 +74,14 @@ passwordInput.addEventListener("input", async () => {
   const breached = await checkHIBP(val);
   if (breached) {
     breachStatus.style.color = "#ff4b5c";
-    breachStatus.textContent = "🚨 This password has been leaked in data breaches!";
+    breachStatus.textContent = "🚨 This password has been leaked in known data breaches!";
   } else {
     breachStatus.style.color = "#00c853";
     breachStatus.textContent = "✅ Not found in known breaches.";
   }
 });
 
-// Add new weak password
-document.getElementById("addButton").addEventListener("click", () => {
-  const newPwd = document.getElementById("newCommonPassword").value.trim().toLowerCase();
-  const status = document.getElementById("addStatus");
-
-  if (newPwd && !commonPasswords.includes(newPwd)) {
-    commonPasswords.push(newPwd);
-    status.style.color = "#00c853";
-    status.textContent = `✅ Added "${newPwd}" to common password list.`;
-  } else if (commonPasswords.includes(newPwd)) {
-    status.style.color = "#ffb347";
-    status.textContent = `⚠️ "${newPwd}" already exists in the list.`;
-  } else {
-    status.style.color = "#ff4b5c";
-    status.textContent = "❌ Enter a valid password.";
-  }
-  document.getElementById("newCommonPassword").value = "";
-});
-
-// Upload file with weak passwords
-document.getElementById("fileInput").addEventListener("change", (event) => {
-  const file = event.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const lines = e.target.result.split(/\r?\n/).map(l => l.trim().toLowerCase());
-    const added = lines.filter(l => l && !commonPasswords.includes(l));
-    commonPasswords.push(...added);
-    alert(`✅ Added ${added.length} new common passwords.`);
-  };
-  reader.readAsText(file);
-});
-
-// 🔐 HIBP API check
+// 🔐 HIBP API check (secure k-anonymity method)
 async function checkHIBP(password) {
   const encoder = new TextEncoder();
   const buffer = await crypto.subtle.digest("SHA-1", encoder.encode(password));
