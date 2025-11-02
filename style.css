@@ -7,34 +7,31 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+  background: radial-gradient(circle at top left, #0a0f1a, #0f2027, #1a1f2b);
   overflow: hidden;
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 0;
-}
-
 .container {
-  position: relative;
-  z-index: 1;
-  background: rgba(22, 27, 34, 0.9);
+  background: rgba(22, 27, 34, 0.95);
   padding: 40px;
   border-radius: 16px;
   width: 380px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
   text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 35px rgba(0, 255, 136, 0.15);
 }
 
 h1 {
   font-size: 24px;
   margin-bottom: 10px;
+  color: #00ff9f;
 }
 
 p {
@@ -48,11 +45,16 @@ input[type="password"] {
   padding: 12px;
   font-size: 16px;
   border-radius: 8px;
-  border: none;
-  outline: none;
+  border: 1px solid #30363d;
   background: #161b22;
   color: white;
   margin-top: 10px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+input[type="password"]:focus {
+  border-color: #00ff9f;
 }
 
 .strength-meter {
@@ -67,7 +69,7 @@ input[type="password"] {
 #strength-bar {
   height: 100%;
   width: 0%;
-  transition: width 0.3s ease;
+  transition: width 0.3s ease, background-color 0.3s ease;
   border-radius: 5px;
 }
 
@@ -94,4 +96,8 @@ input[type="password"] {
   font-weight: bold;
   margin-top: 10px;
   font-size: 14px;
+}
+
+.overlay {
+  display: none; /* removed overlay since no image now */
 }
