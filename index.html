@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Password Strength Checker 🔐</title>
+  <title>Password Strength & Breach Checker 🔐</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="overlay"></div>
   <div class="container">
-    <h1>🔐 Password Strength Checker</h1>
-    <p>Test your password’s strength and get security suggestions.</p>
+    <h1>🔐 Password Strength & Breach Checker</h1>
+    <p>Check how secure your password is and whether it has been leaked online.</p>
 
     <!-- Password Input -->
     <input type="password" id="password" placeholder="Enter your password..." />
@@ -21,6 +21,7 @@
     <!-- Strength Feedback -->
     <p id="feedback"></p>
     <ul id="issues"></ul>
+    <p id="breachStatus"></p>
 
     <!-- Add New Common Password -->
     <hr>
@@ -33,6 +34,7 @@
     <hr>
     <h3>Upload Common Password List</h3>
     <input type="file" id="fileInput" accept=".txt" />
+
   </div>
 
   <script src="script.js"></script>
