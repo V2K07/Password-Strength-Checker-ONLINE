@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Strength Checker</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    input { padding: 10px; width: 300px; }
+    #strength { font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Password Strength Checker 🔐</h1>
+  <input type="password" id="password" placeholder="Enter your password">
+  <div id="strength"></div>
+
+  <script>
+    const input = document.getElementById('password');
+    const strengthDisplay = document.getElementById('strength');
+
+    input.addEventListener('input', () => {
+      const pwd = input.value;
+      let strength = 0;
+
+      if (pwd.length >= 8) strength++;
+      if (/[A-Z]/.test(pwd)) strength++;
+      if (/[a-z]/.test(pwd)) strength++;
+      if (/\d/.test(pwd)) strength++;
+      if (/[@$!%*?&]/.test(pwd)) strength++;
+
+      const levels = ["Weak ❌", "Fair ⚠️", "Good ✅", "Strong 💪", "Very Strong 🔥"];
+      strengthDisplay.textContent = levels[strength - 1] || "";
+      strengthDisplay.style.color = ["red", "orange", "yellow", "green", "blue"][strength - 1] || "black";
+    });
+  </script>
+</body>
+</html>
