@@ -7,20 +7,19 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <canvas id="bgCanvas"></canvas>
-  <div class="overlay"></div>
   <div class="container">
     <h1>🔐 Password Strength & Breach Checker</h1>
-    <p>Test your password’s strength and check if it’s been leaked in data breaches.</p>
+    <p>Check your password strength and if it’s been leaked in data breaches.</p>
 
     <!-- Password Input -->
     <input type="password" id="password" placeholder="Enter your password..." />
 
+    <!-- Strength Meter -->
     <div class="strength-meter">
       <div id="strength-bar"></div>
     </div>
 
-    <!-- Feedback Section -->
+    <!-- Feedback -->
     <p id="feedback"></p>
     <ul id="issues"></ul>
     <p id="breachStatus"></p>
