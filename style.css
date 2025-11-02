@@ -1,39 +1,43 @@
-/* ===== Global Page Setup ===== */
+/* ===== Global Layout ===== */
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
   display: flex;
-  justify-content: center;  /* Centers horizontally */
-  align-items: center;      /* Centers vertically */
+  justify-content: center;
+  align-items: center;
   font-family: 'Segoe UI', Tahoma, sans-serif;
   color: #e6edf3;
-  background: radial-gradient(circle at top left, #0a0f1a, #0f2027, #1a1f2b);
+  background: linear-gradient(135deg, #0b0f16, #0e1624, #131b2b);
   overflow: hidden;
 }
 
-/* ===== Container (Dialog Box) ===== */
+/* ===== Frosted Glass Container ===== */
 .container {
-  background: rgba(22, 27, 34, 0.95);
-  padding: 40px;
+  background: rgba(22, 27, 34, 0.35);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
+  padding: 40px;
   width: 380px;
   max-width: 90%;
-  box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
   text-align: center;
+  box-shadow: 0 0 35px rgba(0, 255, 136, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .container:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 35px rgba(0, 255, 136, 0.15);
+  box-shadow: 0 0 40px rgba(0, 255, 136, 0.15);
 }
 
-/* ===== Text ===== */
+/* ===== Headings & Text ===== */
 h1 {
   font-size: 24px;
   margin-bottom: 10px;
   color: #00ff9f;
+  letter-spacing: 0.5px;
 }
 
 p {
@@ -42,29 +46,30 @@ p {
   color: #bcbcbc;
 }
 
-/* ===== Input Field ===== */
+/* ===== Password Input ===== */
 input[type="password"] {
   width: 100%;
   padding: 12px;
   font-size: 16px;
   border-radius: 8px;
-  border: 1px solid #30363d;
-  background: #161b22;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(20, 25, 33, 0.6);
   color: white;
   margin-top: 10px;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 input[type="password"]:focus {
   border-color: #00ff9f;
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
 }
 
 /* ===== Strength Meter ===== */
 .strength-meter {
   width: 100%;
   height: 10px;
-  background: #2f3136;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   margin-top: 15px;
   overflow: hidden;
@@ -82,6 +87,7 @@ input[type="password"]:focus {
   margin-top: 15px;
   font-size: 16px;
   font-weight: bold;
+  color: #00ff9f;
 }
 
 #issues {
@@ -103,7 +109,18 @@ input[type="password"]:focus {
   font-size: 14px;
 }
 
-/* ===== Optional Overlay (disabled since no background image) ===== */
+/* ===== Disable overlay (no bg image now) ===== */
 .overlay {
   display: none;
+}
+
+/* ===== Small Screen Support ===== */
+@media (max-width: 480px) {
+  .container {
+    padding: 25px;
+    width: 90%;
+  }
+  h1 {
+    font-size: 20px;
+  }
 }
