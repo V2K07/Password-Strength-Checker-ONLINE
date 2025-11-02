@@ -42,11 +42,9 @@ The app displays both **visual (color bar)** and **textual** feedback such as:
 
 ## 🚀 Demo
 
-Try the live version here (after hosting it):
+Try the live version here :
 
-👉 **[Password Strength Checker Demo](https://your-username.github.io/password-checker/)**
-
-*(Replace `your-username` with your GitHub username.)*
+https://v2k07.github.io/Password-Strength-Checker-ONLINE/
 
 ---
 
