@@ -1,33 +1,62 @@
+/* Background & layout */
 body {
-  background-color: #0d1117;
-  color: #e6edf3;
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
   margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: #e6edf3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
 }
 
 .container {
-  background: #161b22;
-  padding: 30px;
+  position: relative;
+  z-index: 1;
+  background: rgba(22, 27, 34, 0.9);
+  padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.05);
-  width: 350px;
+  width: 380px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
   text-align: center;
 }
 
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #bcbcbc;
+}
+
+/* Input */
 input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
+  font-size: 16px;
   border-radius: 8px;
   border: none;
   outline: none;
-  font-size: 16px;
-  margin-top: 10px;
+  background: #161b22;
+  color: white;
 }
 
+/* Strength bar */
 .strength-meter {
   width: 100%;
   height: 10px;
@@ -44,8 +73,22 @@ input {
   border-radius: 5px;
 }
 
+/* Feedback */
 #feedback {
   margin-top: 15px;
-  font-weight: bold;
   font-size: 16px;
+  font-weight: bold;
+}
+
+#issues {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+#issues li {
+  text-align: left;
+  font-size: 13px;
+  color: #ffb347;
+  margin-bottom: 5px;
 }
